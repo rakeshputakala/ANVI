@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+    color: white;
+    background-color: rgb(1, 34, 41);
+    font-family: sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    margin-top: 10px;
+}
+
+.animation{
+    margin: 0;
+    padding-top: 220px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: translateY(-68px) rotateX(70deg);
+}
+
+
+.animate{
+    animation-direction: reverse;
+}
+
+.river{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    background-color: #3498db;
+    border: 5px solid #2980b9;
+    animation: river-moving 4s linear infinite;
+}
+
+.r2{
+    animation-delay: 0.5s;
+}
+
+.r3{
+    animation-delay: 1.5s;
+}
+
+.r4{
+    animation-delay: 2.5s;
+}
+
+.r5{
+    animation-delay: 3.5s;
+}
+
+@keyframes river-moving{
+    from{
+        height: 0px;
+        width: 0px;
+        border-radius: 0px;
+    }
+    
+    to{
+        height: 30em;
+        width: 30em;
+        border-radius: 30em;
+        opacity: 0;
+        box-shadow: 0px 30px 50px 30px rgba(40, 128, 185, .5);
+    }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+        @keyframes river-moving{
+        from{
+            height: 0px;
+            width: 0px;
+            border-radius: 100%;
+        }
+
+        to{
+            height: 40%;
+            width: 70%;
+            border-radius: 100%;
+            opacity: 0;
+            box-shadow: 0px 30px 50px 30px rgba(40, 128, 185, .5);
+        }
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container mt-4" style="padding-top: 100px;">
+        <div class="animate">
+            <h1>Welcome Back!, Let's Start</h1>
+            <img src="https://prod-discovery.edx-cdn.org/media/course/image/5c90d49e-e57d-4789-a729-334980458fe0-cc522b69c4f7.small.jpeg" height="100px" width="120px">
+            <div class="animation">
+                <div class="river r1"></div>
+                <div class="river r2"></div>
+                <div class="river r3"></div>
+                <div class="river r4"></div>
+                <div class="river r5"></div>
+            </div>
+            <div class="stars"></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6" >
+                
+                <form method="POST" class="mb-4">
+                    {% csrf_token %}
+                
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input style="height:25px; border-radius:18px ;"   type="text"  name="username" class="form-control" id="username" required>
+                    </div>
+                    <br>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input style="height:25px; border-radius:18px ;"  type="password" name="password" class="form-control" id="password" required>
+                    </div>
+                    <br>
+                    <div style="padding-left: 40px;">
+                    <button type="submit" class="btn btn-primary" style=" border-radius: 18px; height: 50px; width: 100px; color: beige; background-image: url(https://img.freepik.com/free-vector/3d-style-black-background-with-paper-layer_206725-669.jpg);">Login</button>
+                    </div>
+                </form>
+                <p class="mb-0">Don't have an account? <a href="{% url 'user_register' %}" style="color: aqua;">Register</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+    
+

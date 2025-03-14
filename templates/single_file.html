@@ -1,0 +1,86 @@
+<head>
+
+    {% extends 'main.html' %}
+    {% block title %}Single File{% endblock %}
+    {% block content %}
+    <div >    
+        <div class="container mt-4">
+            <form method="POST" class="mb-4">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="summary-options">Summary Options</label>
+                    <select name="summary-options" class="form-control" id="summary-options">
+                        <option value="1">Whole Summary</option>
+                        <option value="2">Information</option>
+                        <option value="3">Description</option>
+                        <option value="4">Column Types</option>
+                        <option value="5">Filter dataset</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Column</label>
+                    <input class="form-control" name="basic-column" type="text" placeholder="Please Give the exact column name" />
+                </div>
+    
+                <div class="form-group">
+                    <label>Select Target Column</label>
+                    <input class="form-control" name="target-column" type="text" placeholder="Please Give the Exact column Name" />
+                </div>
+    
+                <div class="form-group">
+                    <label>Select Conditiob</label>
+                    <select name="condition">
+                        <option value="1">Equals To</option>
+                        <option value="2">Greater Than</option>
+                        <option value="3">Lesser Than</option>
+                        <option value="4">Not Equals To</option>
+                    </select>
+    
+                    <label>Give value</label>
+                    <input type="text" name="value" placeholder="enter a value"/>
+                </div>
+    
+                <div class="form-group">
+                    <label for="visualization-options">Visualization Options</label>
+                    <select name="visualization-options" class="form-control" id="visualization-options">
+                        <option value="1">All Types of Graphs</option>
+                        <option value="2">Possible Bar Chart</option>
+                        <option value="3">Possible Pie Chart</option>
+                        <option value="4">Possible Count Plot</option>
+                        <option value="5">Possible Line Chart</option>
+                        <option value="6">Possible Bivariate Chart</option>
+                    </select>
+                </div>
+    
+                <div class="form-group">
+                    <label>Column1</label>
+                    <input type="text" class="form-control" name="visual-column1" />
+                    <label>Column2</label>
+                    <input type="text" class="form-control" name="visual-column2"/>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    
+            {% if summary %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Summary</h5>
+                        <p class="card-text">{{ summary | safe }}</p>
+                    </div>
+                </div>
+            {% endif %}
+    
+            {% if visualization %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Visualization</h5>
+                        <img src="{{visualization}}" alt="{{visualization}}" >
+                    </div>
+                </div>
+            {% endif %}
+        </div></div>
+    {% endblock content %}
+    
+</head>

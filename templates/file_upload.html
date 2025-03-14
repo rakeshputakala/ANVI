@@ -1,0 +1,149 @@
+<head>
+    <style>
+        bodY {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.center {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+.wave {
+  width: 5px;
+  height: 100px;
+  background: linear-gradient(45deg, cyan, #fff);
+  margin: 10px;
+  animation: wave 1s linear infinite;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+        .large-header {
+   position: relative;
+   width: 100%;
+   background: #111;
+   overflow: hidden;
+   background-size: cover;
+   background-position: center center;
+   z-index: 1;
+}
+.container-demo{
+    background-color: #111;
+}
+.demo .large-header {
+   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
+}
+
+.main-title {
+   position: absolute;
+   margin: 0;
+   padding: 5;
+   color: #F9F1E9;
+   text-align: center;
+   top: 50%;
+   left: 48%;
+   -webkit-transform: translate3d(-40%, -30%, 0);
+   transform: translate3d(-40%, -30%, 0);
+}
+
+.demo .main-title {
+   text-transform: uppercase;
+   font-size: 2.2em;
+   letter-spacing: 2.1em;
+}
+
+.main-title .thin {
+   font-weight: 200;
+}
+
+@media only screen and (max-width: 768px) {
+   .demo .main-title {
+      font-size: 3em;
+   }
+}
+    </style>
+</head>
+{% extends 'main.html' %}
+{% block title %}Upload Data{% endblock %}
+{% block content %}
+<div class="container-demo">
+    <div class="content">
+       <div id="large-header" class="large-header">
+          <canvas id="demo-canvas"></canvas>
+          <h1 class="main-title"><span class="thin">Explore the data through</span> ANVI</h1>
+       </div>
+    </div>
+ </div>
+ <div class="center">
+    <img src="https://www.filemail.com/images/marketing/upload-your-files.svg" width="90px" height="90px">
+    
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <img src="https://cdn.sanity.io/images/tlr8oxjg/production/2d8450596e26adafc8e47e88a65bce42104b732a-1456x816.png?w=3840&q=80&fit=clip&auto=format" width="120px" height="90px">
+  </div>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="POST" enctype="multipart/form-data" class="mb-4">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="file">Dataset</label>
+                        <input type="file" name="file" class="form-control-file" id="file" accept=".csv" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

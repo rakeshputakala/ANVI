@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% block title %}File List{% endblock %}
+{% block content %}
+<h1 style="background-color: black; color: aliceblue; padding-bottom: 10px;">Files Uploaded Earlier</h1>
+    <div class="container mt-4">
+        <ul class="list-group">
+            {% for data in all_data %}
+                <li class="list-group-item">
+                    <a href="{% url 'single_file' data.id %}">{{ data.data.name }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        <img src="https://cdn.iconscout.com/icon/free/png-256/free-my-files-461721.png?f=webp" width="200px" height="200px" style="margin-top: 10%; margin-left: 40%; opacity: 0.6;">
+        <h2 style="opacity: 0.6; margin-left: 44%; ">MyFiles</h2>
+    </div>
+{% endblock content %}
